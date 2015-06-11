@@ -213,6 +213,37 @@ namespace Sudoku
             }
 
             // Recherche hypothèses sur région
+            List<Case> regionList = new List<Case>();
+            int longueurRegion = Convert.ToInt16(Math.Sqrt(Longueur));
+
+            int moduloColumn = column % longueurRegion;
+            int columnStartRegion = column - moduloColumn;
+            int columnEndRegion = columnStartRegion + longueurRegion - 1;
+
+            int moduloRow = row % longueurRegion;
+            int rowStartRegion = row - moduloRow;
+            int rowEndRegion = rowStartRegion + longueurRegion - 1;
+
+            for (int i = 0; i < Longueur; i++)
+            {
+                for (int j = 0; j < Longueur; j++)
+                {
+                    Case casee = Cases[j][i];
+                    if(i >= columnStartRegion && i <= columnEndRegion && j >= rowStartRegion && j <= rowEndRegion)
+                    {
+                        regionList.Add(Cases[j][i]);
+                    }
+                }
+            }
+
+            string region = string.Join<Case>("", regionList);
+            IEnumerable<char> interRegion = c.Hypotheses.Intersect(region);
+            foreach (char ch in interRegion)
+            {
+                int index = Array.IndexOf(c.Hypotheses, ch);
+                c.Hypotheses = c.Hypotheses.Where(val => val != ch).ToArray();
+            }
+
         }
 
          private char[,] GetConvertCasesToChars()

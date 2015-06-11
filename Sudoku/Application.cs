@@ -64,8 +64,8 @@ namespace Sudoku
 
         private void resoudreGrilles()
         {
-            grilles[0].resoudre();
-            Console.WriteLine(grilles[0].ToString());
+            grilles[4].resoudre();
+            Console.WriteLine(grilles[4].ToString());
         }
 
         public List<Grille> Grilles
