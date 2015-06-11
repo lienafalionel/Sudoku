@@ -57,15 +57,21 @@ namespace Sudoku
                     char tabulation = (char)file.Read();
                     char sautDeLigne = (char)file.Read();
                 }
-                grilles.Add(grille);
+                if(grille.Longueur == 9 || grille.Longueur == 16 || grille.Longueur == 25)
+                {
+                    grilles.Add(grille);
+                }
             }
             file.Close();
         }
 
         private void resoudreGrilles()
         {
-            grilles[4].resoudre();
-            Console.WriteLine(grilles[4].ToString());
+            foreach(Grille g in grilles)
+            {
+                g.resoudre();
+                Console.WriteLine(g.ToString());
+            }
         }
 
         public List<Grille> Grilles
