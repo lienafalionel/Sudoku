@@ -27,11 +27,10 @@ namespace Sudoku
         {
             foreach (Grille grille in grilles)
             {
-                if(!grille.EstValide())
+                if (!grille.EstValide())
                 {
                     return false;
                 }
-                Console.WriteLine("Grille " + grille.Nom + ": " + (grille.EstValide() ? "valide" : "non valide"));
             }
             return true;
         }
@@ -42,7 +41,6 @@ namespace Sudoku
             StreamReader file = new StreamReader(pathFile);
             while ((line = file.ReadLine()) != null)
             {
-                //string ligneCom = line;
                 string nom = file.ReadLine();
                 string date = file.ReadLine();
                 string symboles = file.ReadLine();

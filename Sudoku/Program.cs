@@ -13,6 +13,8 @@ namespace Sudoku
         {
             //Application application = new Application(@"Fichier de sudoku résolution (version du 15 04 2015).sud");
             Application application = new Application(@"Sudokus à Résoudre.sud");
+
+            Console.ReadKey();
         }
     }
 }
